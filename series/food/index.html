@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>りんごみかんの木</title>
+
+  <link rel="stylesheet" href="../../styles.css">
+
+  <style>
+    .episode-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 20px;
+      margin-top: 20px;
+    }
+
+    .episode-card {
+      background: white;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      transition: 0.2s;
+    }
+
+    .episode-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .episode-card img {
+      width: 100%;
+      height: 150px;
+      object-fit: cover;
+    }
+
+    .episode-card .content {
+      padding: 10px;
+    }
+
+    .episode-card a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .episode-card h3 {
+      margin: 0;
+      font-size: 1rem;
+      color: #333;
+    }
+
+    .episode-card p {
+      margin: 5px 0 0;
+      font-size: 0.8rem;
+      color: gray;
+    }
+  </style>
+</head>
+
+<body>
+
+<header class="header">
+  <div class="header-inner">
+  <a href="https://appleorangesleaf.github.io/home/index.html" class="logo">
+    🍎🌳 りんごみかんの木
+  </a>
+
+  <a href="../../index.html" class="top-link">
+    物語TOP
+  </a>
+</div>
+    <div class="hero">
+      <h1>🍎りんごみかんの木の本棚📚</h1>
+      <p>♥少しずつ書いてます♥</p>
+    </div>
+</header>
+
+<main class="container">
+  <h1>食材視点の物語</h1>
+  <p>食材の視点から描く短編シリーズ。</p>
+
+  <div id="episode-list" class="episode-grid"></div>
+</main>
+
+<footer class="footer">
+  <p>© りんごみかんの木</p>
+</footer>
+
+<script>
+async function loadEpisodes() {
+  const res = await fetch("episodes.json");
+  const data = await res.json();
+
+  const container = document.getElementById("episode-list");
+
+  data.episodes.forEach(ep => {
+    const card = document.createElement("div");
+    card.className = "episode-card";
+
+    const thumb = ep.thumbnail || "sample.png";
+    const thumbPath = "../../images/food/" + thumb;
+
+    card.innerHTML = `
+      <a href="episode-${ep.num}.html">
+        <img src="${thumbPath}" alt="">
+        <div class="content">
+          <h3>第${ep.num}話：${ep.title}</h3>
+          <p>${ep.date}</p>
+        </div>
+      </a>
+    `;
+
+    container.appendChild(card);
+  });
+}
+
+loadEpisodes();
+</script>
+
+</body>
+</html>

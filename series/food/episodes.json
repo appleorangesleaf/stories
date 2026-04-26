@@ -1,0 +1,16 @@
+{
+  "episodes": [
+    {
+      "num": 1,
+      "title": "温度",
+      "date": "2026-04-27",
+      "thumbnail": "thumb1.png"
+    },
+    {
+      "num": 2,
+      "title": "出会い",
+      "date": "2026-04-28",
+      "thumbnail": "thumb2.png"
+    }
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "series": [
+    {
+        "id": "food",
+        "title": "食材視点の物語",
+        "description": "食材視点のお話を少し",
+        "path": "series/food/index.html"
+    },
+    {
+      "id": "apple",
+      "title": "りんごみかんの木",
+      "description": "不思議な木の物語",
+      "path": "series/apple/index.html"
+    },
+    {
+      "id": "orange",
+      "title": "みかんの冒険",
+      "description": "甘くてちょっと切ない旅",
+      "path": "series/mikan/index.html"
+    }
+  ]
+}

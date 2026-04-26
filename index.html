@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>りんごみかんの木</title>
+
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+  <header class="header">
+  <div class="header-inner">
+  <a href="https://appleorangesleaf.github.io/home/index.html" class="logo">
+    🍎🌳 りんごみかんの木
+  </a>
+
+  <a href="../../index.html" class="top-link">
+    物語TOP
+  </a>
+</div>
+
+    <div class="hero">
+      <h1>🍎りんごみかんの木の本棚📚</h1>
+      <p>♥少しずつ書いてます♥</p>
+    </div>
+  </header>
+
+  <main class="container">
+    <h2 class="section-title">シリーズ</h2>
+    <div id="series-list"></div>
+  </main>
+
+  <footer class="footer">
+    <p>© りんごみかんの木</p>
+  </footer>
+
+  <script>
+    async function loadSeries() {
+      const res = await fetch("data.json");
+      const data = await res.json();
+
+      const container = document.getElementById("series-list");
+
+      data.series.forEach(s => {
+        const card = document.createElement("div");
+        card.className = "card";
+
+        card.innerHTML = `
+          <h2>${s.title}</h2>
+          <p>${s.description}</p>
+          <a href="${s.path}" class="btn">読む</a>
+        `;
+
+        container.appendChild(card);
+      });
+    }
+
+    loadSeries();
+  </script>
+</body>
+</html>
